@@ -48,17 +48,19 @@ p{color:var(--warna-teks);font-size:18px;font-weight:700;line-height:1.4em;margi
 </head>
 <body>
 
-   <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=1000&auto=format&fit=crop" id="wallpaper"/>
+   <!-- Fondo original de la carpeta Midias -->
+   <img src="./midias/fundo1.jpg" id="wallpaper"/>
    <div id="bodyblur"></div>
    <div id="beneranblur"></div>
 
    <div id='Content'>
       <div id="suratin" onClick="memulai()">
-         <img src="https://cdn-icons-png.flaticon.com/512/726/726623.png"/>
+         <img src="./midias/envelope.png"/>
       </div>
       <p id="ket">Toca el sobre para abrir tu regalo 💌</p>
    
-      <div><img src="gato.jpg" id="fotoakhir"/></div>
+      <!-- Foto del gatito dentro de la carpeta Midias -->
+      <div><img src="./midias/gato.jpg" id="fotoakhir"/></div>
       
       <div><blockquote id='bq'>
          <p id="kalimat"></p>
@@ -113,7 +115,6 @@ p{color:var(--warna-teks);font-size:18px;font-weight:700;line-height:1.4em;margi
   }
 
   function tolak(){
-      // Si dice NO: Muestra el gatito triste
       kalimat.style.display = "none";
       Tombol.style.display = "none";
       fotoakhir.style.display = "inline-flex";
@@ -126,7 +127,6 @@ p{color:var(--warna-teks);font-size:18px;font-weight:700;line-height:1.4em;margi
   }
 
   function conververdade(){
-      // Si dice SÍ: Muestra la felicitación y lanza los corazones
       Tombol.style.display = "none";
       kalimat.innerHTML = "Feliz cumple mi niña";
       kalimatb.innerHTML = "te amo mucho 🧡";
