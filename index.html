@@ -26,7 +26,7 @@ a{text-decoration:none;}
 #wallpaper{width:100%; height:100%; object-fit:cover; position:fixed; top:0; left:0; z-index:-2;}
 #beneranblur{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(3px); backdrop-filter:blur(3px);z-index:-1;}
 
-#Content{position:relative;opacity:0;margin-top:20vh;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:all 1s ease;}
+#Content{position:relative;opacity:0;margin-top:15vh;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:all 1s ease;}
 
 #suratin img{display:inline-flex;background:rgba(255,255,255, 1);border-radius:15px;padding:15px;width:110px;height:90px;transition:all .3s ease;box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor:pointer;}
 #suratin img:hover{transform:scale(0.95);}
@@ -48,19 +48,29 @@ p{color:var(--warna-teks);font-size:18px;font-weight:700;line-height:1.4em;margi
 </head>
 <body>
 
-   <!-- Fondo original de la carpeta Midias -->
-   <img src="./midias/fundo1.jpg" id="wallpaper"/>
+   <!-- Referencias a los GIFs originales con la M mayúscula en Midias -->
+   <div id="pesanstiker" style="display:none;">
+		<img id="stiker1" src="./Midias/figu8.gif"/>
+		<img id="stiker2" src="./Midias/figu2.gif"/>
+		<img id="stiker3" src="./Midias/figu1.gif"/>
+		<img id="stiker4" src="./Midias/figu4.gif"/>
+		<img id="stiker5" src="./Midias/figu5.gif"/>
+		<img id="stiker6" src="./Midias/teste.gif"/>
+   </div>
+
+   <!-- Fondo original con Midias -->
+   <img src="./Midias/fundo1.jpg" id="wallpaper"/>
    <div id="bodyblur"></div>
    <div id="beneranblur"></div>
 
    <div id='Content'>
       <div id="suratin" onClick="memulai()">
-         <img src="./midias/envelope.png"/>
+         <img src="./Midias/envelope.png"/>
       </div>
       <p id="ket">Toca el sobre para abrir tu regalo 💌</p>
    
-      <!-- Foto del gatito dentro de la carpeta Midias -->
-      <div><img src="./midias/gato.jpg" id="fotoakhir"/></div>
+      <!-- Foto del gatito dentro de Midias -->
+      <div><img src="./Midias/gato.jpg" id="fotoakhir"/></div>
       
       <div><blockquote id='bq'>
          <p id="kalimat"></p>
@@ -74,10 +84,39 @@ p{color:var(--warna-teks);font-size:18px;font-weight:700;line-height:1.4em;margi
    </div>
 
 <script>
-  function iniciarAnimacion() {
-      document.getElementById('Content').style.opacity = "1";
+  const swalst = Swal.mixin({timer: 2500, allowOutsideClick: false, showConfirmButton: false, timerProgressBar: true, imageWidth: 100, imageHeight: 100});
+
+  function showDiv() { document.getElementById('Content').style.opacity = "1"; }
+  setTimeout(showDiv, 100);
+
+  async function pesan(){
+      await swalst.fire({
+          title: '¡Hola mi pequeña ❤️!',
+          imageUrl: '' + stiker1.src,
+      });
+      await swalst.fire({
+          title: '¿Cómo estás mi amor? 🥳',
+          imageUrl: '' + stiker2.src,
+      });
+      await swalst.fire({
+          title: 'Mi vida cambió cuando te conocí ❤️',
+          imageUrl: '' + stiker6.src,
+      });
+      await swalst.fire({
+          title: '¿Sabías que te amo muchísimo? 🤭',
+          imageUrl: '' + stiker3.src,
+      });
+      await swalst.fire({
+          title: 'De verdad, te amo desde hace mucho tiempo 👉🏻👈🏻',
+          imageUrl: '' + stiker4.src,
+      });
+      await swalst.fire({
+          title: 'Amo estar a tu lado ❤️',
+          imageUrl: '' + stiker5.src,
+      });
+      
+      kpemb();
   }
-  setTimeout(iniciarAnimacion, 100);
 
   function memulai(){
       suratin.style.transition = "all 1s ease";
@@ -86,10 +125,10 @@ p{color:var(--warna-teks);font-size:18px;font-weight:700;line-height:1.4em;margi
       ket.style.transition = "all 1s ease";
       ket.style.transform = "scale(.1)";
       ket.style.opacity = "0";
-      setTimeout(mostrarPregunta, 400);
+      setTimeout(pesan, 400);
   }
   
-  function mostrarPregunta() {
+  function kpemb() {
       suratin.style.display = "none";
       ket.style.display = "none";
       bq.style.opacity = "1";
